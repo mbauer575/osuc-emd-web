@@ -1,0 +1,13 @@
+# Application Keys
+webkeys.json
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+vflask/
+venv/
+s/
+~/
+.vscode/
