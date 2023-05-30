@@ -1,8 +1,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import boto3
-import json
+import requests
+import io
 # from Raw_Data import *
 from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
@@ -20,21 +20,12 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 #refreshes page every 5 minutes
 st_autorefresh(interval=5 * 60 * 1000, key="dataframerefresh")
 
-# use boto3 to connect to s3 and download the file
-# get aws credentials from json file
-f = open('webkeys.json')
-data = json.load(f)
-
-session = boto3.Session(
-    aws_access_key_id= data["aws_access_key_id"],
-    aws_secret_access_key= data["aws_secret_access_key"],
-)
-s3 = session.resource('s3')
-s3.meta.client.download_file('cascades-energy-bucket', 'master.csv', 'master.csv')
-
+# # Connect to Azure Blob Storage
+url = "https://osuemdatatesting.blob.core.windows.net/testmaster/master.csv"
+response = requests.get(url)
 
 # Read in data from csv to dataframe
-dataframe = pd.read_csv('master.csv',parse_dates=[['Date', 'Time']])
+dataframe = pd.read_csv(io.StringIO(response.content.decode('utf-8')), parse_dates=[['Date', 'Time']])
 
 dataframe['Time'] = dataframe['Date_Time']
 
