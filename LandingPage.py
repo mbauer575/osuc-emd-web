@@ -16,7 +16,7 @@ hide_menu_style = """
         </style>
         """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
-
+# hi my name is max
 #refreshes page every 5 minutes
 st_autorefresh(interval=5 * 60 * 1000, key="dataframerefresh")
 
