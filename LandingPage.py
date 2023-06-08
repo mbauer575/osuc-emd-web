@@ -13,6 +13,12 @@ st.set_page_config(
 hide_menu_style = """
         <style>
         #MainMenu {visibility: hidden;}
+        .block-container {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
         </style>
         """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
@@ -34,7 +40,7 @@ dataframe['Time'] = dataframe['Date_Time']
 # print(dataframe.head())
 
 # Title webpage
-st.markdown("<h1 style='text-align: center; color: orange;'>Residance Hall Energy Dashboard</h1>",unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #D73F09;'>Residance Hall Energy Dashboard</h1>",unsafe_allow_html=True)
 # st.title('ENERGY!!! :zap:')
 
 st.markdown("<h2 style='text-align: center;'>Current Electrical Usage</h2>", unsafe_allow_html=True)
