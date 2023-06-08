@@ -35,17 +35,6 @@ dataframe = pd.read_csv(io.StringIO(response.content.decode('utf-8')), parse_dat
 
 dataframe['Time'] = dataframe['Date_Time']
 
-# print statements for debugging
-# print(dataframe.info())
-# print(dataframe.head())
-
-# Title webpage
-st.markdown("<h1 style='text-align: center; color: #D73F09;'>Residance Hall Energy Dashboard</h1>",unsafe_allow_html=True)
-# st.title('ENERGY!!! :zap:')
-
-st.markdown("<h2 style='text-align: center;'>Current Electrical Usage</h2>", unsafe_allow_html=True)
-#st.write('Current Power Usage')
-
 # Columns with current energy trends
 col1, col2, col3, col4, col5 = st.columns(5)    #Establishes number of columns
 
